@@ -1,0 +1,72 @@
+<!-- vehicules/templates/vehicules/vehicule_details.html -->
+{% extends "admin/base_site.html" %} {% block content %}
+<h1>Détails du Véhicule</h1>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Marque</th>
+      <td>{{ vehicule.marque }}</td>
+    </tr>
+    <tr>
+      <th>Modèle</th>
+      <td>{{ vehicule.modele }}</td>
+    </tr>
+    <tr>
+      <th>Année</th>
+      <td>{{ vehicule.annee }}</td>
+    </tr>
+    <tr>
+      <th>Couleur</th>
+      <td>{{ vehicule.couleur }}</td>
+    </tr>
+    <tr>
+      <th>Immatriculation</th>
+      <td>{{ vehicule.immatriculation }}</td>
+    </tr>
+    <tr>
+      <th>Kilométrage</th>
+      <td>{{ vehicule.kilometrage }}</td>
+    </tr>
+    <tr>
+      <th>Date d'achat</th>
+      <td>{{ vehicule.date_achat }}</td>
+    </tr>
+    {% if vehicule.photo %}
+    <tr>
+      <th>Photo</th>
+      <td>
+        <img
+          src="{{ vehicule.photo.url }}"
+          alt="Photo du Véhicule"
+          style="max-width: 200px"
+        />
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <th>Photo</th>
+      <td>Aucune photo disponible</td>
+    </tr>
+    {% endif %} {% if vehicule.chauffeur %}
+    <tr>
+      <th>Chauffeur</th>
+      <td>
+        <a
+          href="{% url 'admin:chauffeur_chauffeur_change' vehicule.chauffeur.id %}"
+        >
+          {{ vehicule.chauffeur.nom }} {{ vehicule.chauffeur.prenom }}
+        </a>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <th>Chauffeur</th>
+      <td>Aucun chauffeur assigné</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+<a class="btn btn-primary" href="{% url 'admin:vehicule_vehicule_changelist' %}"
+  >Retour</a
+>
+{% endblock %}
