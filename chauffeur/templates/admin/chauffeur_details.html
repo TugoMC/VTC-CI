@@ -1,0 +1,62 @@
+<!-- chauffeur/templates/chauffeur/chauffeur_details.html -->
+{% extends "admin/base_site.html" %} {% block content %}
+<h1>Détails du Chauffeur</h1>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Nom</th>
+      <td>{{ chauffeur.nom }}</td>
+    </tr>
+    <tr>
+      <th>Prénom</th>
+      <td>{{ chauffeur.prenom }}</td>
+    </tr>
+    <tr>
+      <th>Âge</th>
+      <td>{{ chauffeur.age }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ chauffeur.email }}</td>
+    </tr>
+    <tr>
+      <th>Numéro de pièce</th>
+      <td>{{ chauffeur.numero_piece }}</td>
+    </tr>
+    <tr>
+      <th>Lieu de résidence</th>
+      <td>{{ chauffeur.lieu_de_residence }}</td>
+    </tr>
+    <tr>
+      <th>Nom du père</th>
+      <td>{{ chauffeur.nom_pere }}</td>
+    </tr>
+    <tr>
+      <th>Nom de la mère</th>
+      <td>{{ chauffeur.nom_mere }}</td>
+    </tr>
+    {% if chauffeur.photo %}
+    <tr>
+      <th>Photo</th>
+      <td>
+        <img
+          src="{{ chauffeur.photo.url }}"
+          alt="Photo du Chauffeur"
+          style="max-width: 200px"
+        />
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <th>Photo</th>
+      <td>Aucune photo disponible</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+<a
+  class="btn btn-primary"
+  href="{% url 'admin:chauffeur_chauffeur_changelist' %}"
+  >Retour</a
+>
+{% endblock %}

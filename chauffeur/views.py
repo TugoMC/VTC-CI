@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
-# Create your views here.
+from chauffeur.models import Chauffeur
+
+def chauffeur_details_view(request, id):
+    chauffeur = get_object_or_404(Chauffeur, id=id)
+    return render(request, 'admin/chauffeur_details.html', {'chauffeur': chauffeur})
