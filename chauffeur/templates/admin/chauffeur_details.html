@@ -54,9 +54,15 @@
     {% endif %}
   </tbody>
 </table>
+<!-- Button to fire the chauffeur -->
+<form method="post" action="{% url 'fire_chauffeur' chauffeur.id %}">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Licencier</button>
+</form>
+
 <a
-  class="btn btn-primary"
   href="{% url 'admin:chauffeur_chauffeur_changelist' %}"
-  >Retour</a
+  class="btn btn-primary"
+  >Retour à la liste des chauffeurs</a
 >
 {% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'admin/base_site.html' %} {% block content %}
+<h1>Historique des Licenciements</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Chauffeur</th>
+      <th>Date de Licenciement</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for historique in historique %}
+    <tr>
+      <td>{{ historique.chauffeur.nom }} {{ historique.chauffeur.prenom }}</td>
+      <td>{{ historique.date_licenciement|date:"d/m/Y" }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="2">Aucun licenciement enregistré.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
